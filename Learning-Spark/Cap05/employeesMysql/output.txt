@@ -1,0 +1,175 @@
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
+
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+22/05/12 00:33:36 INFO SparkContext: Running Spark version 3.0.3
+22/05/12 00:33:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+22/05/12 00:33:36 INFO ResourceUtils: ==============================================================
+22/05/12 00:33:36 INFO ResourceUtils: Resources for spark.driver:
+
+22/05/12 00:33:36 INFO ResourceUtils: ==============================================================
+22/05/12 00:33:36 INFO SparkContext: Submitted application: 882f4420-2c59-4125-af7d-43c17d1c379c
+22/05/12 00:33:36 INFO SecurityManager: Changing view acls to: ruben.estebas
+22/05/12 00:33:36 INFO SecurityManager: Changing modify acls to: ruben.estebas
+22/05/12 00:33:36 INFO SecurityManager: Changing view acls groups to: 
+22/05/12 00:33:36 INFO SecurityManager: Changing modify acls groups to: 
+22/05/12 00:33:36 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(ruben.estebas); groups with view permissions: Set(); users  with modify permissions: Set(ruben.estebas); groups with modify permissions: Set()
+22/05/12 00:33:37 INFO Utils: Successfully started service 'sparkDriver' on port 49261.
+22/05/12 00:33:37 INFO SparkEnv: Registering MapOutputTracker
+22/05/12 00:33:37 INFO SparkEnv: Registering BlockManagerMaster
+22/05/12 00:33:37 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+22/05/12 00:33:37 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+22/05/12 00:33:37 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+22/05/12 00:33:37 INFO DiskBlockManager: Created local directory at C:\Users\ruben.estebas\AppData\Local\Temp\blockmgr-bd7b64e3-742a-4c36-9803-1283bbe17d2d
+22/05/12 00:33:37 INFO MemoryStore: MemoryStore started with capacity 912.3 MiB
+22/05/12 00:33:37 INFO SparkEnv: Registering OutputCommitCoordinator
+22/05/12 00:33:37 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+22/05/12 00:33:37 WARN Utils: Service 'SparkUI' could not bind on port 4041. Attempting port 4042.
+22/05/12 00:33:37 WARN Utils: Service 'SparkUI' could not bind on port 4042. Attempting port 4043.
+22/05/12 00:33:37 INFO Utils: Successfully started service 'SparkUI' on port 4043.
+22/05/12 00:33:37 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://L2203086.bosonit.local:4043
+22/05/12 00:33:37 INFO Executor: Starting executor ID driver on host L2203086.bosonit.local
+22/05/12 00:33:37 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 49304.
+22/05/12 00:33:37 INFO NettyBlockTransferService: Server created on L2203086.bosonit.local:49304
+22/05/12 00:33:37 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+22/05/12 00:33:37 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, L2203086.bosonit.local, 49304, None)
+22/05/12 00:33:37 INFO BlockManagerMasterEndpoint: Registering block manager L2203086.bosonit.local:49304 with 912.3 MiB RAM, BlockManagerId(driver, L2203086.bosonit.local, 49304, None)
+22/05/12 00:33:37 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, L2203086.bosonit.local, 49304, None)
+22/05/12 00:33:37 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, L2203086.bosonit.local, 49304, None)
+spark: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@11e76637
+
+
+readFromMySql: (db: String, dbTable: String)org.apache.spark.sql.DataFrame
+
+
+
+
+
+
+
+
+
+
+
+
+
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+employees: org.apache.spark.sql.DataFrame = [emp_no: int, birth_date: date ... 4 more fields]
+
+
+departments: org.apache.spark.sql.DataFrame = [dept_no: string, dept_name: string]
+
+
+
+deptEmp: org.apache.spark.sql.DataFrame = [emp_no: int, dept_no: string ... 2 more fields]
+
+
+
+salaries: org.apache.spark.sql.DataFrame = [emp_no: int, salary: int ... 2 more fields]
+
+
+
+titles: org.apache.spark.sql.DataFrame = [emp_no: int, title: string ... 2 more fields]
+
+
+
+foo: org.apache.spark.sql.DataFrame = [emp_no: int, birth_date: date ... 4 more fields]
+
+foo2: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [emp_no: int, birth_date: date ... 14 more fields]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++------+----------+----------+---------+------+----------+----------+----------+-------+---------------+---------------+----------+----------+------+------------------+----------+
+|emp_no|birth_date|first_name|last_name|gender| hire_date| from_date|   to_date|dept_no|      dept_name|          title| from_date|   to_date|salary|from_date_salaries|   to_date|
++------+----------+----------+---------+------+----------+----------+----------+-------+---------------+---------------+----------+----------+------+------------------+----------+
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 60117|        1986-06-26|1987-06-26|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 62102|        1987-06-26|1988-06-25|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 66074|        1988-06-25|1989-06-25|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 66596|        1989-06-25|1990-06-25|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 66961|        1990-06-25|1991-06-25|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 71046|        1991-06-25|1992-06-24|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 74333|        1992-06-24|1993-06-24|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 75286|        1993-06-24|1994-06-24|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 75994|        1994-06-24|1995-06-24|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 76884|        1995-06-24|1996-06-23|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 80013|        1996-06-23|1997-06-23|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 81025|        1997-06-23|1998-06-23|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 81097|        1998-06-23|1999-06-23|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 84917|        1999-06-23|2000-06-22|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 85112|        2000-06-22|2001-06-22|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 85097|        2001-06-22|2002-06-22|
+| 10001|1953-09-02|    Georgi|  Facello|     M|1986-06-26|1986-06-26|9999-01-01|   d005|    Development|Senior Engineer|1986-06-26|9999-01-01| 88958|        2002-06-22|9999-01-01|
+| 10002|1964-06-02|   Bezalel|   Simmel|     F|1985-11-21|1996-08-03|9999-01-01|   d007|          Sales|          Staff|1996-08-03|9999-01-01| 65828|        1996-08-03|1997-08-03|
+| 10002|1964-06-02|   Bezalel|   Simmel|     F|1985-11-21|1996-08-03|9999-01-01|   d007|          Sales|          Staff|1996-08-03|9999-01-01| 65909|        1997-08-03|1998-08-03|
+| 10002|1964-06-02|   Bezalel|   Simmel|     F|1985-11-21|1996-08-03|9999-01-01|   d007|          Sales|          Staff|1996-08-03|9999-01-01| 67534|        1998-08-03|1999-08-03|
+| 10002|1964-06-02|   Bezalel|   Simmel|     F|1985-11-21|1996-08-03|9999-01-01|   d007|          Sales|          Staff|1996-08-03|9999-01-01| 69366|        1999-08-03|2000-08-02|
+| 10002|1964-06-02|   Bezalel|   Simmel|     F|1985-11-21|1996-08-03|9999-01-01|   d007|          Sales|          Staff|1996-08-03|9999-01-01| 71963|        2000-08-02|2001-08-02|
+| 10002|1964-06-02|   Bezalel|   Simmel|     F|1985-11-21|1996-08-03|9999-01-01|   d007|          Sales|          Staff|1996-08-03|9999-01-01| 72527|        2001-08-02|9999-01-01|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 40006|        1995-12-03|1996-12-02|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 43616|        1996-12-02|1997-12-02|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 43466|        1997-12-02|1998-12-02|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 43636|        1998-12-02|1999-12-02|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 43478|        1999-12-02|2000-12-01|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 43699|        2000-12-01|2001-12-01|
+| 10003|1959-12-03|     Parto|  Bamford|     M|1986-08-28|1995-12-03|9999-01-01|   d004|     Production|Senior Engineer|1995-12-03|9999-01-01| 43311|        2001-12-01|9999-01-01|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 40054|        1986-12-01|1987-12-01|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 42283|        1987-12-01|1988-11-30|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 42542|        1988-11-30|1989-11-30|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 46065|        1989-11-30|1990-11-30|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 48271|        1990-11-30|1991-11-30|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 50594|        1991-11-30|1992-11-29|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 52119|        1992-11-29|1993-11-29|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 54693|        1993-11-29|1994-11-29|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|       Engineer|1986-12-01|1995-12-01| 58326|        1994-11-29|1995-11-29|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|Senior Engineer|1995-12-01|9999-01-01| 62566|        1996-11-28|1997-11-28|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|Senior Engineer|1995-12-01|9999-01-01| 64340|        1997-11-28|1998-11-28|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|Senior Engineer|1995-12-01|9999-01-01| 67096|        1998-11-28|1999-11-28|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|Senior Engineer|1995-12-01|9999-01-01| 69722|        1999-11-28|2000-11-27|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|Senior Engineer|1995-12-01|9999-01-01| 70698|        2000-11-27|2001-11-27|
+| 10004|1954-05-01| Chirstian|  Koblick|     M|1986-12-01|1986-12-01|9999-01-01|   d004|     Production|Senior Engineer|1995-12-01|9999-01-01| 74057|        2001-11-27|9999-01-01|
+| 10005|1955-01-21|   Kyoichi| Maliniak|     M|1989-09-12|1989-09-12|9999-01-01|   d003|Human Resources|          Staff|1989-09-12|1996-09-12| 78228|        1989-09-12|1990-09-12|
+| 10005|1955-01-21|   Kyoichi| Maliniak|     M|1989-09-12|1989-09-12|9999-01-01|   d003|Human Resources|          Staff|1989-09-12|1996-09-12| 82621|        1990-09-12|1991-09-12|
+| 10005|1955-01-21|   Kyoichi| Maliniak|     M|1989-09-12|1989-09-12|9999-01-01|   d003|Human Resources|          Staff|1989-09-12|1996-09-12| 83735|        1991-09-12|1992-09-11|
+| 10005|1955-01-21|   Kyoichi| Maliniak|     M|1989-09-12|1989-09-12|9999-01-01|   d003|Human Resources|          Staff|1989-09-12|1996-09-12| 85572|        1992-09-11|1993-09-11|
+| 10005|1955-01-21|   Kyoichi| Maliniak|     M|1989-09-12|1989-09-12|9999-01-01|   d003|Human Resources|          Staff|1989-09-12|1996-09-12| 85076|        1993-09-11|1994-09-11|
++------+----------+----------+---------+------+----------+----------+----------+-------+---------------+---------------+----------+----------+------+------------------+----------+
+only showing top 50 rows
