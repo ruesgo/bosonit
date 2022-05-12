@@ -18,7 +18,7 @@ def readFromMySql(db: String, dbTable: String)  = {
     .option("driver", "com.mysql.jdbc.Driver")
     .option("dbtable", dbTable)
     .option("user", "root")
-    .option("password", "G3hkPfPq")
+    .option("password", "[password]")
     .load()
 }
 
